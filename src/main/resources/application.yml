@@ -1,0 +1,58 @@
+# 서버 설정
+server:
+  port: 5000
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      
+# 뷰리졸버 설정
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/nblog/
+      suffix: .jsp
+      
+# 데이터소스 설정
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://nblog-db.cwkbtg1ml0ug.us-east-2.rds.amazonaws.com:3306/nblog
+    username: admin
+    password: nblogadmin
+    
+# JPA 설정
+  jpa:
+    open-in-view: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: update
+    properties:
+      hibernate:
+        "[format_sql]": true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 317766609429-30fbuiugr6qu6hrovf8v303sibio2ofl.apps.googleusercontent.com
+            client-secret: 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
+            scope: email, profile
+            
+# 카카오 비밀번호
+kakao:
+  default:
+    password: kakao123
+    
+# 구글 비밀번호
+google:
+  default:
+    password: google123
+
+# application.yml 파일에서 Spring Security 로그를 DEBUG 레벨로 설정
+#logging:
+#  level:
+#    "[org.springframework.security]": DEBUG
